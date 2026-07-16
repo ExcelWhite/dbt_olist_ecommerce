@@ -1,0 +1,47 @@
+version: 2
+
+models:
+    - name: bronze_customers
+      config:
+        materialized: table
+        schema: bronze
+    
+    - name: bronze_orders
+      config:
+        materialized: table
+        schema: bronze
+    
+    - name: bronze_order_items
+      config:
+        materialized: table
+        schema: bronze
+    
+    - name: bronze_order_payments
+      config:
+        materialized: table
+        schema: bronze
+
+    - name: bronze_order_reviews
+      config:
+        materialized: table
+        schema: bronze
+
+    - name: bronze_products
+      config:
+        materialized: table
+        schema: bronze
+
+    - name: bronze_sellers
+      config:
+        materialized: table
+        schema: bronze
+
+    - name: bronze_geolocation
+      config:
+        materialized: table
+        schema: bronze
+
+    - name: bronze_product_category_name_translation
+      config:
+        materialized: table
+        schema: bronze

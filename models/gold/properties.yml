@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: gold_business_overview
+    config:
+      materialized: table
+      schema: gold
+    
+  - name: gold_customer_behaviour
+    config:
+      materialized: table
+      schema: gold
+    
+  - name: gold_operations
+    config:
+      materialized: table
+      schema: gold
+    description: >
+      Gold analytical table highlighting operational logistics, shipping durations, 
+      and on-time delivery percentages grouped by broader Brazilian macro-regions.
+    columns:
+      - name: customer_region
+        description: "The macro-region of Brazil (e.g., North, Southeast) mapped via the static seed lookup."
+        data_tests: # Updated to modern syntax!
+          - not_null
+          - unique
+
+      - name: region_on_time_delivery_rate_percentage
+        description: "Percentage of delivered orders that arrived on or before their estimated delivery date."
+        data_tests:
+          - not_null
+
+      - name: region_avg_delivery_time_days
+        description: "The average actual delivery duration in days for orders delivered within this region."
+
+  - name: gold_sellers_performance
+    config:
+      materialized: table
+      schema: gold
+    description: >
+      Gold analytical table tracking Olist's merchant network, isolating highly active sellers, 
+      shipping reliability metrics, and classifying high-risk merchants.
+    columns:
+      - name: seller_id
+        description: "The unique identifier for a registered seller on the Olist platform."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: seller_state
+        description: "The state code where the seller is registered."
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('brazil_state_regions')
+              field: state_code
+
+      - name: is_high_revenue_low_rating_risk
+        description: "A boolean flag isolating sellers in the top 25% of lifetime platform revenue but the bottom 25% of review satisfaction scores."
+        data_tests:
+          - not_null
+
+  - name: gold_customer_experience
+    config:
+      materialized: table
+      schema: gold
+    description: >
+      Gold analytical table examining the impact of shipping and fulfillment delays 
+      on customer feedback and reviews.
+    columns:
+      - name: product_category_english
+        description: "The English translated product category name."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: avg_category_review_score
+        description: "The average customer satisfaction rating (1-5 stars) given to items in this product category."
+        data_tests:
+          - not_null
+
+      - name: platform_avg_delay_for_one_star
+        description: "Platform-wide average delay benchmark specifically calculated for 1-star reviews to correlate delays with low ratings."

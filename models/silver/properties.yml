@@ -1,0 +1,22 @@
+version: 2
+
+models:
+    - name: silver_orders_enriched
+      config:
+        materialized: table
+        schema: silver
+    
+    - name: silver_order_items_details
+      config:
+        materialized: table
+        schema: silver
+    
+    - name: silver_reviews_aggregated
+      config:
+        materialized: table
+        schema: silver
+    
+    - name: silver_customer_orders_sequenced
+      config:
+        materialized: table
+        schema: silver
