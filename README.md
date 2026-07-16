@@ -23,26 +23,28 @@ You can interact with the live code graph in the [Interactive dbt Documentation]
 
 The following metrics and analytics are extracted natively from the validated tables inside the **Gold Marts layer**.
 
-## 📈 Act 1 — Business Overview (`gold_business_overview`)
+### 📈 Act 1 — Business Overview (`gold_business_overview`)
 
 - **Order Scale & Volatility:** Monthly platform volume expanded steadily to a baseline range of 6,000 to 7,000 orders, though month-over-month revenue velocity shows intense cyclical volatility.
 - **Stabilization Trends:** The pipeline captures a massive historical growth surge early in 2017, which rapidly compressed down into a stable, mature, and predictable ecosystem by 2018.
 
-![Orders per month & MoM Revenue Change](results/screenshots/act1.png)
+![Orders per month & MoM Revenue Change](results/screenshots/act_1.png)
 
 ---
 
-## 👥 Act 2 — Customer Behaviour (`gold_customer_behaviour`)
+### 👥 Act 2 — Customer Behaviour (`gold_customer_behaviour`)
 
 - **Systemic Retention Struggles:** State-level metrics show that low repeat-purchase rates are a systemic challenge across all of Brazil rather than a localized regional issue, with the customer repeat rate consistently hovering around the low 3.12% platform average regardless of geography.
 - **The Installment Spending Lift:** The side-by-side bar graph reveals a stark, uniform pattern across every single Brazilian state: the average order value for installment purchases (`state_aov_installments`, shown in blue) consistently and significantly outpaces immediate full payments (`state_aov_paid_in_full`, shown in orange), proving that financing options uniformly catalyze higher ticket spending nationwide.
 
-![State-by-State Comparison: Installment AOV vs Paid in Full AOV](results/screenshots/act2.png)
+![State-by-State Comparison: Installment AOV vs Paid in Full AOV](results/screenshots/act_2.png)
 
 ### 🚚 Act 3 — Operations (`gold_operations`)
-*   **Platform Baseline:** Fulfillment operations are fundamentally robust, maintaining a **91.89% platform-wide on-time delivery rate**.
-*   **The Regional Bottleneck:** By rolling up tracking durations via our custom geographic seed files, the data exposes stark infrastructure hurdles. The **North Region** undergoes the longest shipping delays, spearheaded by **Roraima** averaging an extreme **28.98 days** for successful delivery.
-*   *📊 [Insert Geographic Heatmap: Brazil State-Level Delivery Delays]*
+
+- **Geographic Logistics Bottlenecks:** The regional fulfillment heatmap isolates a significant macro-regional divide across Brazil, revealing that while the South and Southeast regions maintain highly efficient, lighter-shaded delivery timelines, the North and Northeast regions experience prolonged, darker-shaded delivery delays.
+- **Category-Specific Strain:** Looking at the vertical axis, the data maps these extended shipping durations directly against high-impact sectors like `office_furniture`, proving that specific product categories compound the logistical friction when traveling into more remote geographic territories.
+
+![Regional Operations Heatmap](results/screenshots/act_3.png)
 
 ### 🏪 Act 4 — Seller Performance (`gold_sellers_performance`)
 *   **Logistical Underperformers:** The model flags **316 highly active sellers** falling drastically behind fulfillment standards with on-time delivery rates below 80%. These merchants represent **$677,825.99** in gross platform value and require active compliance coaching.
