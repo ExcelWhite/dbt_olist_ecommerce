@@ -47,14 +47,18 @@ The following metrics and analytics are extracted natively from the validated ta
 ![Regional Operations Heatmap](results/screenshots/act_3.png)
 
 ### 🏪 Act 4 — Seller Performance (`gold_sellers_performance`)
-*   **Logistical Underperformers:** The model flags **316 highly active sellers** falling drastically behind fulfillment standards with on-time delivery rates below 80%. These merchants represent **$677,825.99** in gross platform value and require active compliance coaching.
-*   **The High-Risk Segment:** Our advanced tiering models successfully isolated a volatile group of **113 sellers** who simultaneously rank in the top quartile for overall revenue but the lowest quartile for review scores—making them primary drivers of brand friction.
-*   *📊 [Insert 2x2 Quadrant Scatterplot: Revenue vs. Review Score highlighting the Risk Quadrant]*
 
-### 💬 Act 5 — Customer Experience (`gold_customer_experience`)
-*   **The Cost of Delays:** The analytical model establishes a clear, quantifiable relationship between operational lag and customer drop-off. Orders that resulted in a critical 1-star review suffered an average shipment delay of **12.36 days past the expected delivery date**.
-*   *📊 [Insert Horizontal Bar Chart: Customer Review Scores (1-5 Stars) vs. Average Days of Delivery Delay]*
+- **Macro Distribution of Platform Risk:** Slicing the merchant ecosystem by our pipeline's custom boolean flag, the bar chart visualizes that the overwhelming majority of merchants reside in a stable operational state (`is_high_revenue_low_rating_risk = false`), pulling in a dominant share of total gross revenue.
+- **The Critical Revenue At-Risk Segment:** Isolating the `true` cohort directly exposes the exact group of 113 high-revenue, low-rating sellers. While they account for a much smaller overall count of merchants (represented by the blue volume bar), they control a highly disproportionate multi-million dollar slice of gross platform value (represented by the orange revenue bar)—making them the absolute highest-priority candidates for operational intervention before their negative customer experience drives compounding platform churn.
 
+![Seller Performance Risk Segments](results/screenshots/act_4.png)
+
+## 💬 Act 5 — Customer Experience (`gold_customer_experience`)
+
+- **Top-Tier Satisfaction Categories:** Highly specialized categories like `cds_dvds_musicals` and `fashion_childrens_clothes` lead the platform with peak average satisfaction scores (`avg_category_review_score`) of **4.64** and **4.50** respectively, driven by efficient operations where average shipping times consistently beat their delivery estimates by over **15 days** (`avg_category_delivery_delay_days` under -15.00).
+- **The Delivery-to-Sentiment Connection:** The underlying category-level breakdown confirms that as delivery delays worsen, average review scores drop. While 5-star reviews across almost all categories enjoy swift fulfillment (averaging roughly **13 to 17 days early**, indicated by the negative values), any operational friction that slips past the platform's target baseline directly correlates with depressed overall category ratings.
+
+![Product Category Review Scores vs Delivery Delays](results/screenshots/act_5.png)
 ---
 
 ## 🛠️ 3. Engineering & Pipeline Features
