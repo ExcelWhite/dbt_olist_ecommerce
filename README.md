@@ -74,12 +74,12 @@ To maintain clean code and prevent pipeline-breaking bugs, this project implemen
 
 ```text
 ├── docs/                               # Hosted GitHub Pages artifacts (Live Docs)
-├── data/                               # Version-controlled reference seed CSVs
 ├── macros/                             # Reusable Jinja transformation logic
 ├── models/
-│   ├── staging/                        # BRONZE: Source model maps & freshness tests
-│   ├── intermediate/                   # SILVER: Cleansing & sequencing logic
-│   └── marts/                          # GOLD: Structured, audited aggregate marts
+│   ├── bronze/                         # BRONZE: Source model maps & freshness tests
+│   ├── silver/                         # SILVER: Cleansing & sequencing logic
+│   └── gold/                           # GOLD: Structured, audited aggregate marts
+├── seeds/                              # Version-controlled reference seed CSVs
 ├── tests/                              # Singular custom business logic tests
 ├── dbt_project.yml                     # Main project manifest configuration
 └── README.md                           # Master documentation hub
